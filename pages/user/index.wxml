@@ -1,0 +1,6 @@
+<view class="user_page">
+  <view class="login_btn_wrap">
+    <button bindtap="handleLogin">登录</button>
+  </view>
+
+</view>

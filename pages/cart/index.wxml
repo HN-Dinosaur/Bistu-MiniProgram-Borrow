@@ -1,0 +1,49 @@
+<view class="select_product">
+  <block wx:if="{{!userInfo.selfName}}">
+  <navigator url="../change_user_info/index">
+    <button>填写基本信息</button>
+  </navigator>
+  </block>
+  <block wx:else> 
+    <view class="user_info_wrap">
+      <view class="useruser_selfName_wrap wrap">
+        <view class="user_selfName_title title"><label>本人姓名</label></view>
+        <view class="user_selfName content">{{userInfo.selfName}}</view>
+      </view>
+      <view class="user_lendName_wrap wrap">
+        <view class="user_lendName_title title"><label>经办人姓名</label></view>
+        <view class="user_lendName content">{{userInfo.lendName}}</view>
+      </view>
+      <view class="user_teacherName_wrap wrap">
+        <view class="user_teacherName_title title"><label>项目老师姓名</label></view>
+        <view class="user_teacherName content">{{userInfo.teacherName}}</view>
+      </view>
+      <view class="user_lendTime_wrap wrap">
+        <view class="user_lendTime_title title"><label>借出天数</label></view>
+        <view class="user_lendTime content">{{userInfo.lendTime}}</view>
+      </view>
+      <view class="user_method_wrap wrap">
+        <view class="user_method_title title"><label>方式</label></view>
+        <view class="user_method content">{{userInfo.method}}</view>
+      </view>
+      <view class="btn_wrap">
+        <navigator url="../change_user_info/index">
+          <button>修改信息</button>
+        </navigator>
+      </view>
+    </view>
+  </block>
+  <view class="product_wrap"> 
+    <view class="product_item">
+      <view class="item_left">
+        <view class="item_name">name:{{product.name}}</view>
+        <view class="item_brandName">brandName:{{product.brandName}}</view>
+        <view class="item_principal">principal:{{product.principal}}</view>
+        <view class="item_value">¥{{product.value}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="confirm_btn_wrap">
+    <button type="primary" bindtap="handleUpload">确认</button>  
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<view class="search">
+  <block wx:if="{{!isDisplaySearchInput}}">
+    <view class="choose_item">
+    <button class="btn" bindtap="handleAccordingName">名称搜索</button>
+    <button class="btn" bindtap="handleAccordingId">设备号搜索</button>
+    <button class="btn" bindtap="handleAccordingBrand">品牌搜索</button>
+    </view>
+  </block>
+  <block wx:else>
+    <SearchInput placeholder="{{placeholder}}" bindclickSearchButton="handleClickSearchButton" bindclickCancelButton="handleClickCancelButton">
+    </SearchInput>
+
+    <view class="product_wrap" wx:for="{{productsList}}" wx:key="id"> 
+      <view class="product_item">
+        <view class="item_left">
+          <view class="item_name">name:{{item.name}}</view>
+          <view class="item_brandName">brandName:{{item.brandName}}</view>
+          <view class="item_principal">principal:{{item.principal}}</view>
+          <view class="item_value">¥{{item.value}}</view>
+        </view>
+      </view>
+      <view class="btn_wrap">
+        <view>
+          <button  bindtap="handleSelect" data-index="{{index}}">选取</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/search/index",
+    "pages/cart/index",
+    "pages/user/index",
+    "pages/search_result/index",
+    "pages/signature/index",
+    "pages/change_user_info/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#d3d4d6",
+    "navigationBarTitleText": "Bistu's Product",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#423e3f",
+    "backgroundColor": "#d3d4d6",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icons/home.png",
+      "selectedIconPath": "icons/home-o.png"
+    },{
+      "pagePath": "pages/search/index",
+      "text": "搜索",
+      "iconPath": "icons/search.png",
+      "selectedIconPath": "icons/search-o.png"
+    },{
+      "pagePath": "pages/cart/index",
+      "text": "选取",
+      "iconPath": "icons/cart.png",
+      "selectedIconPath": "icons/cart-o.png"
+    },{
+      "pagePath": "pages/user/index",
+      "text": "我的",
+      "iconPath": "icons/my.png",
+      "selectedIconPath": "icons/my-o.png"
+    }]
+  }, 
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

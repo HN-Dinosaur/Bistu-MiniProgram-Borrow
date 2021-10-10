@@ -1,0 +1,64 @@
+page{
+  background-color: #d3d4d6;
+}
+.user_form{
+  margin: 20rpx;
+  /* margin-top: 120rpx; */
+  /* background-color: #fff; 
+  border-radius: 15rpx; */
+}
+.single_item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 87rpx;
+  font-size: 34rpx;
+  font-weight: 450rpx;
+  /* margin: 20rpx; */
+  border-bottom: 1px solid #b6b3b3;
+  margin-bottom: 20rpx;
+}
+.item_input{
+  padding-left: 15rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item_title{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* padding-left: 20rpx; */
+  /* background-color: #fff; */
+  width: 230rpx;
+  padding-left: 15rpx;
+}
+.lend_time_item{
+  margin-top: 20rpx;
+}
+.choose_method_item{
+  margin-top: 20rpx;
+}
+.but{
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+  /* background-color: #fff; */
+}
+.submit_btn{
+  margin-left: 30rpx;
+}
+/* .user_signature_item{
+  width: 100%;
+  height: 260rpx;
+  background-color: #fff;
+} */
+.img{
+  /* margin-left: 270rpx; */
+  width: 100%;
+  height: 280rpx;
+  /* float: left; */
+  /* overflow: hidden; */
+  /* orientation: landscape; */
+}

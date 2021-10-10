@@ -1,0 +1,13 @@
+<view class="search">
+  <!-- <navigator url="/pages/search/index" open-type="navigate">搜索</navigator> -->
+  <view class="according_wrap">
+    <view class="input">
+      <input type="text" focus="{{focus}}" placeholder="{{placeholder}}" bindinput="handleInput" value="{{searchInput}}">
+      </input>
+    </view>
+    <view class="button_wrap">
+      <button class="cancel" bindtap="cancel">取消</button>
+      <button class="search" bindtap="search">搜索</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,125 @@
+<view class="change_user_page">
+	<view class="user_form">
+		<view class="user_item">
+
+			<view class="user_signature_item ">
+				<block wx:if="{{selfImg}}">
+					<view class="user_signature_img">
+						<image class="img" src="{{selfImg}}"></image>
+						<view class="img_btn_wrap">
+							<navigator url="../signature/index?index=1">
+								<button type="warn">重新签名</button>
+							</navigator>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="user_signature_button">
+						<navigator url="../signature/index?index=1">
+							<button type="primary">点击签名</button>
+						</navigator>
+					</view>
+				</block>
+			</view>
+
+
+			<view class="user_name_item single_item">
+				<view class="user_name_title item_title"><label>本人姓名</label></view>
+				<view class="user_name_input item_input">
+					<input type="text" placeholder="请填写本人姓名" bindinput="handleSelfNameInput"></input>
+				</view>
+			</view>
+
+			<view class="lendman_signature_item">
+				<block wx:if="{{lendImg}}">
+					<view class="user_signature_img">
+						<image class="img" src="{{lendImg}}"></image>
+						<view class="img_btn_wrap">
+							<navigator url="../signature/index?index=2">
+								<button type="warn">重新签名</button>
+							</navigator>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="lendman_signature_button">
+					<navigator url="../signature/index?index=2">
+						<button type="primary">点击签名</button>
+					</navigator>
+				</view>
+				</block>
+			</view>
+
+
+			<view class="lendman_name_item single_item">
+				<view class="lendman_name_title item_title"><label>经办人姓名</label></view>
+				<view class="lendman_name_input item_input">
+					<input type="text" placeholder="请填写经办人姓名" bindinput="handleLendNameInput"></input>
+				</view>
+			</view>
+
+			<view class="teacher_signature_item">
+				<block wx:if="{{teacherImg}}">
+					<view class="user_signature_img">
+						<image class="img" src="{{teacherImg}}"></image>
+						<view class="img_btn_wrap">
+							<navigator url="../signature/index?index=3">
+								<button type="warn">重新签名</button>
+							</navigator>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="teacher_signature_button">
+						<navigator url="../signature/index?index=3">
+						<button type="primary">点击签名</button>
+						</navigator>
+					</view>
+				</block>
+			</view>
+
+
+			<view class="teacher_name_item single_item">
+				<view class="teacher_name_title item_title"><label>项目老师姓名</label></view>
+				<view class="teacher_name_input item_input" >
+					<input type="text" placeholder="请填写项目老师姓名" bindinput="handleTeacherNameInput"></input>
+				</view>
+			</view>
+
+			<view class="lend_time_item single_item">
+				<view class="lend_time_title item_title">
+					<label>借出天数</label>
+				</view>
+				<view class="lend_time_input item_input">
+					<input type="text" placeholder="请填写借出天数" bindinput="handleLendTime"></input>
+				</view>
+			</view>
+
+			<view class="choose_method_item single_item">
+				<view class="choose_title item_title">
+					<label>方式</label>
+				</view>
+				<view class="choose_method item_input">
+					<radio-group >
+						<radio checked bindtap="handleMethodBorrow">借用</radio>
+						<radio bindtap="handleMethodBring">签领</radio>
+					</radio-group>
+				</view>
+			</view>
+
+		</view>
+	</view>
+<!-- 按钮 -->
+	<view class="but">
+		<view class="back_btn">
+			<navigator open-type="switchTab" url="../cart/index">
+				<button type="warn">返回</button>
+			</navigator>
+		</view>
+		<view class="submit_btn">
+			<navigator open-type="switchTab" url="../cart/index">
+				<button type="primary" bindtap="handleSubmit">提交</button>
+			</navigator>
+		</view>
+	</view>
+</view>

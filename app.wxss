@@ -1,0 +1,26 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box; 
+  background-color:#d3d4d6;
+}
+/*主题颜色*/
+page{
+  /*主题颜色*/
+  --themeColor: #eb4450;
+  /*定义字体大小*/
+  font-size: 28rpx;
+}
+image{
+  width: 100%;
+}
