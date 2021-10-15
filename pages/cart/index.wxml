@@ -1,9 +1,11 @@
 <view class="select_product">
-  <block wx:if="{{!userInfo.selfName}}">
-  <navigator url="../change_user_info/index">
-    <button>填写基本信息</button>
-  </navigator>
+
+  <block wx:if="{{!userInfo.selfName || !userInfo.lendName || !userInfo.teacherName || !userInfo.lendTime || !userInfo.method}}">
+    <navigator url="../change_user_info/index">
+      <button>填写基本信息</button>
+    </navigator>
   </block>
+
   <block wx:else> 
     <view class="user_info_wrap">
       <view class="useruser_selfName_wrap wrap">
@@ -26,24 +28,44 @@
         <view class="user_method_title title"><label>方式</label></view>
         <view class="user_method content">{{userInfo.method}}</view>
       </view>
-      <view class="btn_wrap">
+    </view>
+    <view class="btn_wrap">
         <navigator url="../change_user_info/index">
           <button>修改信息</button>
         </navigator>
       </view>
-    </view>
   </block>
   <view class="product_wrap"> 
     <view class="product_item">
-      <view class="item_left">
-        <view class="item_name">name:{{product.name}}</view>
-        <view class="item_brandName">brandName:{{product.brandName}}</view>
-        <view class="item_principal">principal:{{product.principal}}</view>
-        <view class="item_value">¥{{product.value}}</view>
-      </view>
+
+      <block wx:if="{{product.name}}">
+       <view class="item_name_wrap item_wrap">
+          <view class="item_name_title item_title"><label>名称</label></view>
+          <view class="item_name_content item_content">{{product.name}}</view>
+        </view>
+        <view class="item_brandName_wrap item_wrap">
+          <view class="item_brandName_title item_title"><label>品牌名</label></view>
+          <view class="item_brandName_content item_content">{{product.brandName}}</view>
+        </view>
+        <view class="item_principal_wrap item_wrap">
+          <view class="item_principal_title item_title"><label>负责人</label></view>  
+          <view class="item_principal_content item_content">{{product.principal}}</view>
+        </view>
+        <view class="item_value_wrap item_wrap">
+          <view class="item_value_title item_title"><label>价格</label></view>
+          <view class="item_value_content item_content">¥{{product.value}}</view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="no_product">请在搜索界面选择需要的物品</view>
+      </block>
+
     </view>
   </view>
+
   <view class="confirm_btn_wrap">
     <button type="primary" bindtap="handleUpload">确认</button>  
   </view>
+
 </view>

@@ -26,7 +26,7 @@
 			<view class="user_name_item single_item">
 				<view class="user_name_title item_title"><label>本人姓名</label></view>
 				<view class="user_name_input item_input">
-					<input type="text" placeholder="请填写本人姓名" bindinput="handleSelfNameInput"></input>
+					<input type="text" placeholder="请填写本人姓名" value="{{userInfo.selfName}}" bindinput="handleSelfNameInput"></input>
 				</view>
 			</view>
 
@@ -54,7 +54,7 @@
 			<view class="lendman_name_item single_item">
 				<view class="lendman_name_title item_title"><label>经办人姓名</label></view>
 				<view class="lendman_name_input item_input">
-					<input type="text" placeholder="请填写经办人姓名" bindinput="handleLendNameInput"></input>
+					<input type="text" placeholder="请填写经办人姓名" value="{{userInfo.lendName}}" bindinput="handleLendNameInput"></input>
 				</view>
 			</view>
 
@@ -82,7 +82,7 @@
 			<view class="teacher_name_item single_item">
 				<view class="teacher_name_title item_title"><label>项目老师姓名</label></view>
 				<view class="teacher_name_input item_input" >
-					<input type="text" placeholder="请填写项目老师姓名" bindinput="handleTeacherNameInput"></input>
+					<input type="text" placeholder="请填写项目老师姓名" value="{{userInfo.teacherName}}" bindinput="handleTeacherNameInput"></input>
 				</view>
 			</view>
 
@@ -91,7 +91,7 @@
 					<label>借出天数</label>
 				</view>
 				<view class="lend_time_input item_input">
-					<input type="text" placeholder="请填写借出天数" bindinput="handleLendTime"></input>
+					<input type="text" placeholder="请填写借出天数" value="{{userInfo.lendTime}}" bindinput="handleLendTime"></input>
 				</view>
 			</view>
 
@@ -100,9 +100,22 @@
 					<label>方式</label>
 				</view>
 				<view class="choose_method item_input">
-					<radio-group >
-						<radio checked bindtap="handleMethodBorrow">借用</radio>
-						<radio bindtap="handleMethodBring">签领</radio>
+					<radio-group>
+						<block wx:if="{{canTakeAway}}">
+							<radio checked bindtap="handleMethodBorrow">借用</radio>
+							<radio bindtap="handleMethodBring" disabled>签领</radio>
+						</block>
+						<block wx:else>
+							<block wx:if="{{isBorrow}}">
+								<radio checked bindtap="handleMethodBorrow">借用</radio>
+								<radio bindtap="handleMethodBring">签领</radio>
+							</block>
+							<block wx:else>
+								<radio bindtap="handleMethodBorrow">借用</radio>
+								<radio checked bindtap="handleMethodBring">签领</radio>
+							</block>
+						</block>
+
 					</radio-group>
 				</view>
 			</view>
@@ -117,9 +130,7 @@
 			</navigator>
 		</view>
 		<view class="submit_btn">
-			<navigator open-type="switchTab" url="../cart/index">
-				<button type="primary" bindtap="handleSubmit">提交</button>
-			</navigator>
+			<button type="primary" bindtap="handleSubmit">提交</button>
 		</view>
 	</view>
 </view>

@@ -20,16 +20,15 @@
   border-radius: 20rpx;
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center; */
   padding-left: 145rpx;
+
 }
 .wrap{
   display: flex;
   flex-direction: row;
   font-weight: 550rpx;
   font-size: 35rpx;
-  font-family: 黑体;
+  font-family: serif;
   background-color: #fff;
 }
 .title{
@@ -44,33 +43,22 @@
   background-color: #fff;
 }
 .btn_wrap{
-  background-color: #fff;
-  /* display: flex; */
-  padding-left: 33rpx;
-  margin-top: 10rpx;
+  /* padding-left: 40rpx; */
+  margin-top: 20rpx;
 }
-.btn_wrap navigator{
-  background-color: #fff;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-}
-.btn_wrap navigator button{
+
+.select_product .user_info_wrap .btn_wrap navigator button{
   margin: 0;
 }
 
 
 
 .product_wrap{
-  /* margin: 2rpx; */
-  margin-top: 20rpx;
+  margin-top: 30rpx;
   display: flex;
-  /* background-color: #fff; */
-  /* padding: 20rpx; */
   height: 400rpx;
 }
 .product_wrap .product_item{
-  /* margin-top: 20rpx; */
   padding: 20rpx;
   border-radius: 20rpx;
   background-color: #fff;
@@ -79,30 +67,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   font-weight: 550rpx;
   font-size: 36rpx;
-
+  font-family: serif;
 }
-.item_left{
-  background-color: #fff;
-}
-.item_brandName{
-  background-color: #fff;
-}
-.item_principal{
-    background-color: #fff;
-}
-.item_name{
-  background-color: #fff;
-  /* font-family: 宋体; */
-}
-.item_value{
-  color: rgb(223, 55, 43);
-  background-color: #fff;
+.item_wrap{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+
+  margin-bottom: 10rpx;
 }
+.item_wrap .item_title{
+  width: 180rpx;
+  font-size: 40rpx;
+  background-color: #fff;
+}
+.item_content{
+  width: 180rpx;
+  font-size: 40rpx;
+  background-color: #fff;
+}
+.item_value_content{
+  color: #f00;
+}
+.no_product{
+  background-color: #fff;
+  font-size: 40rpx;
+}
+
 .confirm_btn_wrap{
   margin-top: 50rpx;
 }

@@ -6,17 +6,24 @@ Page({
     userInfo:null,
     product:null
   },
+  uploadInfo:{
+    equipId:0,
+    equipName:"",
+    username:"",
+    userSign:"",
+    lendHuman:"",
+    leHumanSign:"",
+    tecName:"",
+    tecSign:"",
+    borrowTime:""
+  },
   onShow(){
-
-    const userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      userInfo,
+      userInfo:wx.getStorageSync('userInfo'),
       product:wx.getStorageSync('product')
     })
   },
   async handleUpload(){
-
-    const openid = wx.getStorageSync('openid')
     const product = wx.getStorageSync('product')
     const userInfo = wx.getStorageSync('userInfo')
     if(!product){
@@ -27,14 +34,41 @@ Page({
       await showToast({title:"请先填写基本信息"})
       return 
     }
-    if(!openid){
-      await showToast({title:"请先登录"})
-      return
-    }
         //上传信息
-    this.uploadInfo()
+    this.requestResult()
   },
-  async uploadInfo(){
-    
+  wrapperInfo(){
+    const wrapInfo = this.uploadInfo
+    const userInfo = this.data.userInfo
+    const product = this.data.product
+
+    wrapInfo.equipId = product.id
+    wrapInfo.equipName = product.name
+
+    wrapInfo.username = userInfo.selfName
+    wrapInfo.userSign = userInfo.base64SelfImg
+    wrapInfo.lendHuman = userInfo.lendName
+    wrapInfo.leHumanSign = userInfo.base64LendImg
+    wrapInfo.tecName = userInfo.teacherName
+    wrapInfo.tecSign = userInfo.base64TeacherImg
+    wrapInfo.borrowTime = parseInt(userInfo.lendTime)
+    this.uploadInfo = wrapInfo
+  },
+  async requestResult(){
+    console.log(this.uploadInfo)
+    //封装好参数  
+    this.wrapperInfo()
+    const token = wx.getStorageSync('token')
+    const header = {"token":token,"content-type":"application/json"}
+    console.log(header) 
+    wx.request({
+      url: 'http://59.64.75.5:8104/api/princi/auth/borrow',
+      method:"POST",
+      data:this.uploadInfo, 
+      header:header,
+      success:(result)=>{
+        console.log(result)
+      }
+    })
   }
 })

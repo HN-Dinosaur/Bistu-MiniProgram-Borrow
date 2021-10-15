@@ -1,0 +1,66 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "填写信息",
+          "pathName": "pages/change_user_info/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的",
+          "pathName": "pages/user/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "认证",
+          "pathName": "pages/verification/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索物品",
+          "pathName": "pages/search/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "选取物品",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "购物车",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "返还物品",
+          "pathName": "pages/return/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "返回物品",
+          "pathName": "pages/return/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

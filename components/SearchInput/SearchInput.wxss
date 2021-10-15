@@ -8,10 +8,12 @@
   height: 90rpx;
   padding: 15rpx;
   background-color: #d3d4d6;
+  /* background-color: #fff; */
   display: flex;
 }
 .search .according_wrap .input{
   width: 345rpx;
+  /* background-color: #000; */
 }
 .search .according_wrap .input input{
   height: 100%;

@@ -7,8 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isDisplaySearchInput:false,
-    placeholder:"",
     //发送请求返回的数组
     productsList:[],
     searchInput:null,
@@ -19,35 +17,27 @@ Page({
   totalPageNum:1,
   onShow(){
     this.setData({
-      isDisplaySearchInput:false,
       searchInput:null,
     })
     this.page = 1
-    this.sendRequest()
+    this.sendRequest() 
   },
-  handleAccordingName(){
-    this.setData({
-      isDisplaySearchInput:true,
-      placeholder:"根据名称模糊搜索"
-    })
+  handleInput(e){
+    const input = e.detail.value
+    this.setData({searchInput:input})
+    if(input == ""){
+      this.sendRequest()
+    }
   },
-  handleAccordingId(){
-    this.setData({
-      isDisplaySearchInput:true,
-      placeholder:"根据物品id搜索"
-    })
-  },
-  handleAccordingBrand(){
-    this.setData({
-      isDisplaySearchInput:true,
-      placeholder:"根据物品品牌进行搜索"
-    })
-  },
-  //点击搜索按钮  子组件触发的回调函数
-  handleClickSearchButton(e){
-    this.page=1
-    const searchInput = e.detail.value
-    this.setData({searchInput:searchInput})
+  //点击搜索按钮
+  async handleClickSearchButton(e){
+    this.page = 1
+    const input = this.data.searchInput
+    if(!input.trim()){
+      await showToast({title:'输入不合法,请重新输入'})
+      this.setData({searchInput:null})
+      return;
+    }
     this.sendRequest()
   },
   //发送请求
@@ -59,7 +49,7 @@ Page({
       // 参数的合并
       let url = "http://59.64.75.5:8101/admin/equip/list/" + page + "/" + limit
       if(searchInput){
-        url += "?" + searchInput
+        url += "?name=" + searchInput
       }
       // 发送请求
       const result = await request({url,method:"get"})
@@ -89,14 +79,13 @@ Page({
   handleClickCancelButton(e){
     this.setData({
       searchInput:"",
-      isDisplaySearchInput:false
     })
     this.page = 1
     this.sendRequest()
   },
   async handleSelect(e){
     // console.log(e)
-    const result = await showModal({content:"只能选取一个物品"})
+    const result = await showModal({content:"一次只能选取一个物品"})
     if(result.confirm){
       const index = e.currentTarget.dataset.index
       const productsList = this.data.productsList

@@ -1,0 +1,130 @@
+/**index.wxss**/
+page{
+  padding: 25rpx;
+}
+.userinfo {
+  display: flex;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  flex-direction: column;
+  height: 400rpx;
+  font-size: 40rpx;
+  /* font-weight: 390; */
+  font-family: serif;
+}
+.top{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+.userinfo-avatar {
+  background-color: #fff;
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.name_and_no{
+  margin: 20rpx;
+  background-color: #fff;
+
+}
+.name{
+  background-color: #fff;
+}
+.no{
+  background-color: #fff;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  margin: 20rpx;
+  margin-top: 50rpx;
+}
+.sex_and_class{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.sex{
+  background-color: #fff;
+}
+.class{
+  background-color: #fff;
+}
+.college_and_major{
+  margin-left: 35rpx;
+  background-color: #fff;
+}
+.college{
+  background-color: #fff;
+}
+.major{
+  background-color: #fff;
+}
+
+
+.select_button{
+  height: 310rpx;
+  margin-top: 40rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20rpx;
+  border-radius: 20rpx; 
+  /* align-items: center; */
+  font-size: 40rpx;
+  font-family: serif;
+}
+.modify_verification navigator{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.query_history navigator{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.return navigator{
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+
+.contact{
+  margin: 0rpx;
+  margin-top: 50rpx;
+  /* background-color: #000; */
+}
+.contact .contact{
+  width: 100%;
+  height: 120%;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* font-weight: 580; */
+  font-size: 40rpx;
+  /* font-family: serif; */
+
+  font-family: serif;
+}
+.contact .feedback{
+  width: 100%;
+  height: 120%;
+  margin-top: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  font-size: 40rpx;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* font-weight: 580; */
+  font-family: serif;
+}
+

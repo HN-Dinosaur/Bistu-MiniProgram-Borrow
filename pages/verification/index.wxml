@@ -1,0 +1,118 @@
+<view class="change_user_page">
+	<view class="user_form">
+		<view class="user_item">
+
+			<view class="user_name_item single_item">
+				<view class="user_name_title item_title"><label>姓名</label></view>
+				<view class="user_name_input item_input">
+					<input type="text" placeholder="请填写本人姓名" value="{{verification.name}}" bindinput="handleNameInput"></input>
+				</view>
+			</view>
+
+      <view class="choose_method_item single_item">
+				<view class="choose_title item_title"><label>性别</label></view>
+				<view class="choose_method item_input">
+				<block wx:if="{{isMale}}">
+					<radio-group>
+						<radio checked bindtap="handleRadioMaleInput">男</radio>
+						<radio bindtap="handleRadioFemaleInput">女</radio>
+					</radio-group>
+				</block>
+				<block wx:else>
+					<radio-group>
+						<radio bindtap="handleRadioMaleInput">男</radio>
+						<radio checked bindtap="handleRadioFemaleInput">女</radio>
+					</radio-group>
+				</block>
+				</view>
+      </view>
+
+		
+			<view class="teacher_name_item single_item">
+				<view class="teacher_name_title item_title"><label>电话号码</label></view>
+				<view class="teacher_name_input item_input" >
+					<input type="text" placeholder="请填写电话号码" value="{{verification.phone}}" bindinput="handlePhoneInput"></input>
+				</view>
+			</view>
+
+			<view class="lend_time_item single_item">
+				<view class="lend_time_title item_title"><label>学号/工号</label></view>
+				<view class="lend_time_input item_input">
+					<input type="text" placeholder="请填写学号/工号" value="{{verification.no}}" bindinput="handleNoInput"></input>
+				</view>
+			</view> 
+
+      <view class="lend_time_item single_item">
+          <view class="lend_time_title item_title"><label>学院</label></view>
+          <view class="lend_time_input item_input">
+            <input type="text" placeholder="请填写本人所在学院" value="{{verification.college}}" bindinput="handleCollegeInput"></input>
+          </view>
+        </view> 
+
+			<view class="choose_method_item single_item">
+				<view class="choose_title item_title"><label>身份</label></view>
+				<view class="choose_method item_input">
+					<block wx:if="{{isStudent}}">
+						<radio-group> 
+							<radio checked bindtap="handleRadioStudent">学生</radio>
+							<radio bindtap="handleRadioTeacher">老师</radio>
+						</radio-group>
+					</block>
+					<block wx:else>
+						<radio-group>
+							<radio bindtap="handleRadioStudent">学生</radio>
+							<radio checked bindtap="handleRadioTeacher">老师</radio>
+						</radio-group>
+					</block>
+				</view>
+      </view>
+      
+      <block wx:if="{{isStudent}}">
+
+        <view class="lend_time_item single_item">
+          <view class="lend_time_title item_title"><label>年级</label></view>
+          <view class="lend_time_input item_input">
+            <input type="text" placeholder="请填写本人所在年级" value="{{verification.grade}}" bindinput="handleGradeInput"></input>
+          </view>
+        </view> 
+
+        <view class="lend_time_item single_item">
+          <view class="lend_time_title item_title"><label>专业</label></view>
+          <view class="lend_time_input item_input">
+            <input type="text" placeholder="请填写本人所在专业" value="{{verification.major}}" bindinput="handleMajorInput"></input>
+          </view>
+        </view> 
+
+        <view class="lend_time_item single_item">
+          <view class="lend_time_title item_title"><label>班级</label></view>
+          <view class="lend_time_input item_input">
+            <input type="text" placeholder="请填写本人所在班级" value="{{verification.schoolClass}}" bindinput="handleSchoolClassInput"></input>
+          </view>
+        </view> 
+
+      </block>
+      <block wx:else>
+        <view class="lend_time_item single_item">
+          <view class="lend_time_title item_title"><label>系部</label></view>
+          <view class="lend_time_input item_input">
+            <input type="text" placeholder="请填写本人所在系部" value="{{verification.dept}}" bindinput="handleDeptInput"></input>
+          </view>
+        </view> 
+
+      </block>
+      
+
+		</view>
+	</view>
+<!-- 按钮 -->
+	<view class="but">
+		<view class="back_btn">
+			<button type="warn" bindtap="handleCancel">返回</button>
+		</view>
+		<view class="submit_btn">
+			<!-- <navigator open-type="switchTab" url="../cart/index"> -->
+			<button type="primary" bindtap="handleSubmit">提交</button>
+			<!-- </navigator> -->
+		</view>
+	</view>
+</view>

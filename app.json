@@ -5,9 +5,11 @@
     "pages/search/index",
     "pages/cart/index",
     "pages/user/index",
-    "pages/search_result/index",
     "pages/signature/index",
-    "pages/change_user_info/index"
+    "pages/change_user_info/index",
+    "pages/verification/index",
+    "pages/query_history/index",
+    "pages/return/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

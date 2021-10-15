@@ -1,25 +1,31 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
+.page{
+  margin: 10rpx;
+}
+swiper {
+  /* width: 700rpx; */
+  height: 500rpx; 
   align-items: center;
-  color: #aaa;
+  justify-content: center;
 }
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+swiper image {
+  border-radius: 30rpx;
+  width: 100%;
 }
-
-.usermotto {
-  margin-top: 200px;
+.clarify{
+  margin-top: 200rpx;
+  align-items:center;
+  justify-content: center;
+  display: flex;
+  height: 200rpx;
+  /* background-color: #fff; */
+  border-radius: 20rpx;
 }
-.usermotto{
-  font-size: 40rpx;
-  font-weight: 600rpx;
-  /* font-family: 宋体; */
-  color: rgb(255, 81, 0);
+.clarify view{
+  align-items:center;
+  justify-content: center;
+  /* background-color: #fff; */
+  font-size: 50rpx;
+  font-family: serif;
+  font-weight: 400;
+  color: #f00;
 }

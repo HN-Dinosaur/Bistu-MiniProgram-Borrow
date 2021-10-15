@@ -16,15 +16,11 @@ Page({
     this.startCanvas();
  },
   onShow(e){
-    // this.index = e.index
-    // console.log(this.index)
-    // console.log(getCurrentPages())
+
     const currentPages = getCurrentPages()
     const page = currentPages[currentPages.length - 1]
     // console.log(page)
     this.index = parseInt(page.options.index)
-    // console.log(this.index)
-    // console.log(parseInt(this.index))
   },
  /**
  * 以下 - 手写签名 / 上传签名
@@ -103,10 +99,7 @@ Page({
     fileType:'jpg',
     quality:1.0,
     success: function (res) {
-    // console.log(res)
     //点击第一个button，后续以此类推
-
-    // console.log(index)
 
     if(index === 1){
       // console.log(1)

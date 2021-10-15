@@ -1,7 +1,5 @@
 {
-  "usingComponents": {
-    "SearchInput":"../../components/SearchInput/SearchInput"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "搜索中心",
   "enablePullDownRefresh": true,
   "backgroundTextStyle":"dark"
