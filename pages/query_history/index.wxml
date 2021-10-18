@@ -1,5 +1,41 @@
-<view class="query_history">
-  <view class="query_item">
-    
+<view class="search">
+
+<view class="top_search_wrap">
+  <view class="input_wrap">
+    <input type="text" value="{{searchInput}}" placeholder="请根据名称进行搜索" bindinput="handleInput"></input>
   </view>
-</view> 
+  <view class="search_btn_wrap">
+    <button bindtap="handleClickCancelButton">取消</button>
+    <button bindtap="handleClickSearchButton">搜索</button>
+  </view>
+</view>
+
+
+<view class="product_wrap" wx:for="{{historyProducts}}" wx:key="id"> 
+  <view class="product_item">
+    <view class="item_name_wrap item_wrap">
+      <view class="item_name_title item_title"><label>名称</label></view>
+      <view class="item_name_content item_content">{{item.equipName}}</view>
+    </view> 
+    <view class="item_brandName_wrap item_wrap">
+      <view class="item_brandName_title item_title"><label>品牌名</label></view>
+      <view class="item_brandName_content item_content">{{item.brandName}}</view>
+    </view>
+    <view class="item_principal_wrap item_wrap">
+      <view class="item_principal_title item_title"><label>借出时间</label></view>  
+      <view class="item_principal_content item_content">{{item.createTime}}</view>
+    </view>
+    <view class="item_value_wrap item_wrap">
+      <view class="item_value_title item_title"><label>价格</label></view>
+      <view class="item_value_content item_content">¥{{item.value}}</view>
+    </view>
+  </view>
+
+  <view class="btn_wrap">
+    <view>
+      <button bindtap="handleSelect" data-index="{{index}}">返还</button>
+    </view>
+  </view>
+
+</view>
+</view>

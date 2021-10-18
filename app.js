@@ -41,6 +41,8 @@ App({
                   wx.redirectTo({ 
                     url: '../verification/index',
                   })
+                }else{
+                  wx.setStorageSync("token",token)
                 }
               },
               fail:(error)=>{

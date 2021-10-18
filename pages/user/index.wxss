@@ -68,7 +68,7 @@ page{
 
 
 .select_button{
-  height: 310rpx;
+  height: 220rpx;
   margin-top: 40rpx;
   background-color: #fff;
   display: flex;
@@ -85,10 +85,6 @@ page{
   padding: 20rpx;
 }
 .query_history navigator{
-  background-color: #fff;
-  padding: 20rpx;
-}
-.return navigator{
   background-color: #fff;
   padding: 20rpx;
 }

@@ -102,14 +102,20 @@ Page({
     //点击第一个button，后续以此类推
 
     if(index === 1){
-      // console.log(1)
+      console.log(1)
       wx.setStorageSync('selfImg', res.tempFilePath)
     }else if(index === 2){
-      // console.log(2)
+      console.log(2)
       wx.setStorageSync('lendImg', res.tempFilePath)
-    }else{
-      // console.log(3)
+    }else if(index == 3){
+      console.log(3) 
       wx.setStorageSync('teacherImg', res.tempFilePath)
+    }else if(index == 5){
+      console.log(5)
+      wx.setStorageSync('returnSelfImg', res.tempFilePath)
+    }else if(index == 6){
+      console.log(6)
+      wx.setStorageSync('returnLendImg', res.tempFilePath)
     }
     wx.navigateBack({
       delta: 1,

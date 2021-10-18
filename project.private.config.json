@@ -59,6 +59,18 @@
           "pathName": "pages/return/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "访问记录",
+          "pathName": "pages/query_history/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "返还物品",
+          "pathName": "pages/return/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

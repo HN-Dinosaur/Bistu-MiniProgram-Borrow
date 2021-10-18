@@ -48,11 +48,6 @@
       </navigator>
     </view>
 
-    <view class="return">
-      <navigator url="../../pages/return/index">
-        <label>返还物品</label>
-      </navigator>
-    </view>
   </view>
 
   <view class="contact">
