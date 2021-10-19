@@ -9,7 +9,8 @@
     "pages/change_user_info/index",
     "pages/verification/index",
     "pages/query_history/index",
-    "pages/return/index"
+    "pages/return/index",
+    "pages/return_info/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

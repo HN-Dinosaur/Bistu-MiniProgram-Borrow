@@ -1,19 +1,24 @@
-// pages/query_history/index.js
+import {showModal,showToast} from "../../utils/asyncWX.js"
+import {request} from "../../request/index.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    historyProducts:""
+    historyProducts:"",
+    searchInput:""
   },
   page:1,
   limit:10,
-  product:{},
   totalPageNum:1,
 
   onShow: function () {
-    
+    this.sendRequest()
+  },
+  handleInput(e){
+    const input = e.detail.value
+    this.setData({searchInput:input})
   },
   handleClickCancelButton(e){
     this.setData({
@@ -22,67 +27,45 @@ Page({
     this.page = 1
     this.sendRequest()
   },
+  async handleClickSearchButton(){
+    // const historyProducts = this.data.historyProducts
+    const url = "http://59.64.75.5:8104/api/princi/auth/records/1/3?name=" + this.data.searchInput
+    const token = wx.getStorageSync('token')
+    const header = {"token":token}
+    // const resultArray = historyProducts.filter((item)=>item.equipName == this.data.searchInput)
+    wx.request({
+      url: url,
+      method:"GET",
+      header:header,
+      success:(result)=>{
+        console.log(result)
+      }
+    })
+    // console.log(resultArray)
+    // this.setData({
+    //   historyProducts:resultArray
+    // })
+  },
   handleSelect(e){
     const select = e.currentTarget.dataset.index
     const historyProducts = this.data.historyProducts
     const id = historyProducts[select].id
     wx.setStorageSync('returnId', id)
     wx.navigateTo({
-      url: '../return/index',
+      url: '../return_info/index',
     })
-  },
-    //发送请求
-  async sendRequest(){
-    try{
-      const page = this.page
-      const limit = this.limit
-      const searchInput = this.data.searchInput
-      // 参数的合并
-      let url = "http://59.64.75.5:8101/admin/equip/list/" + page + "/" + limit
-      if(searchInput){
-        url += "?name=" + searchInput
-      }
-      // 发送请求
-      const result = await request({url,method:"get"})
-       // 实现触底刷新功能
-      let total = result.data.data.total
-      this.totalPageNum = Math.ceil(total / this.limit)
-      // 对当前页面的物品列表赋值
-      const productsList = result.data.data.records
-      if(this.page >= 2){
-        this.setData({
-          productsList:[...this.data.productsList,...productsList]
-        })
-      }else if(this.page === 1){
-        this.setData({
-          productsList:productsList
-        })
-      }
-      //函数结束，下拉刷新结束
-      wx.stopPullDownRefresh()
-    }catch(error){
-      // console.log(error)
-      if(error.errMsg === "request:fail timeout"){
-        await showToast({title:"网络出现问题"})
-      }
-    }
   },
    //发送请求
    async sendRequest(){
     try{
       const page = this.page
       const limit = this.limit
-      // const searchInput = this.data.searchInput
       // 参数的合并
       let url = "http://59.64.75.5:8104/api/princi/auth/records/" + page + "/" + limit
-      // if(searchInput){
-      //   url += "?name=" + searchInput
-      // }
-      // 发送请求
-      // const result = await request({url,method:"get"})
-
       const token = wx.getStorageSync('token')
       const header = {"token":token}
+
+      //发送请求
       wx.request({
         url: url,
         method:'GET',
@@ -96,23 +79,19 @@ Page({
           const historyProducts = result.data.data.records
           if(this.page >= 2){
             this.setData({
-              historyProducts:[...this.data.historyProducts,...historyProducts]
+              historyProducts:[...this.data.historyProducts,...historyProducts.reverse()]
             })
           }else if(this.page === 1){
             this.setData({
-              historyProducts:historyProducts
+              historyProducts:historyProducts.reverse()
             })
           }
           //函数结束，下拉刷新结束
           wx.stopPullDownRefresh()
-          // this.setData({
-          //   historyProducts:result.data.data.records
-          // })
         }
       })
   
     }catch(error){
-      // console.log(error)
       if(error.errMsg === "request:fail timeout"){
         await showToast({title:"网络出现问题"})
       }
@@ -130,7 +109,7 @@ Page({
     // 下拉刷新功能
   onPullDownRefresh(){
     this.setData({
-      productsList:[],
+      historyProducts:[],
       searchInput:null
     })
     this.page=1

@@ -1,9 +1,9 @@
 <view class="tabs">
   <view class="tabs_title">
     <view class="title_item {{item.isActive?'active':''}}"
-    wx:for="{{tabs}}"
-    wx:key="id" bindtap="handleClick" data-index="{{index}}">
-    {{item.name}}
+      wx:for="{{tabs}}"
+      wx:key="id" bindtap="handleClick" data-index="{{index}}">
+      {{item.name}}
     </view>
   </view>
   <view class="tabs_content">
