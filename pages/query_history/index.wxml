@@ -23,7 +23,7 @@
       </view>
       <view class="item_principal_wrap item_wrap">
         <view class="item_principal_title item_title"><label>预归还时间</label></view>  
-        <view class="item_principal_content item_content">{{item.createTime}}</view>
+        <view class="item_principal_content item_content">{{item.returnTime}}</view>
       </view>
       <view class="item_value_wrap item_wrap">
         <view class="item_value_title item_title"><label>状态</label></view>

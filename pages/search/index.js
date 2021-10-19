@@ -29,6 +29,13 @@ Page({
       this.sendRequest()
     }
   },
+  handleClickCancelButton(e){
+    this.setData({
+      searchInput:"",
+    })
+    this.page = 1
+    this.sendRequest()
+  },
   //点击搜索按钮
   async handleClickSearchButton(e){
     this.page = 1
@@ -76,13 +83,7 @@ Page({
       }
     }
   },
-  handleClickCancelButton(e){
-    this.setData({
-      searchInput:"",
-    })
-    this.page = 1
-    this.sendRequest()
-  },
+
   async handleSelect(e){
     // console.log(e)
     const result = await showModal({content:"一次只能选取一个物品"})

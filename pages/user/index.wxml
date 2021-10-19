@@ -16,16 +16,16 @@
       <view class="sex_and_class">
         <view class="sex">性别: {{verification.sex == 1 ? "男" : "女"}}</view>
         <block wx:if="{{verification.isStudent}}">
-          <view class="class">班级: {{verification.schoolClass}}</view>
+          <view class="class">班级: {{verification.schoolClass == "" ? "待填写" : verification.schoolClass}}</view>
         </block>
         <block wx:else>
-          <view class="class">系部: {{verification.dept}}</view>
+          <view class="class">系部: {{verification.dept == "" ? "待填写" : verification.dept}}</view>
         </block>
       </view>
       <view class="college_and_major">
-        <view class="college">学院: {{verification.college}}</view>
+        <view class="college">学院: {{verification.college == "" ? "待填写" : verification.college}}</view>
         <block wx:if="{{verification.isStudent}}">
-          <view class="major">专业: {{verification.major}}</view>
+          <view class="major">专业: {{verification.major == "" ? "待填写" : verification.major}}</view>
         </block>
       </view>
     </view>

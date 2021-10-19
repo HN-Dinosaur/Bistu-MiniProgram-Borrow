@@ -7,18 +7,25 @@ Page({
    */
   data: {
     historyProducts:"",
-    searchInput:""
+    searchInput:null
   },
   page:1,
   limit:10,
   totalPageNum:1,
 
   onShow: function () {
-    this.sendRequest()
+    this.setData({
+      searchInput:null,
+    })
+    this.page = 1
+    this.sendRequest() 
   },
   handleInput(e){
     const input = e.detail.value
     this.setData({searchInput:input})
+    if(input == ""){
+      this.sendRequest()
+    }
   },
   handleClickCancelButton(e){
     this.setData({
@@ -28,23 +35,14 @@ Page({
     this.sendRequest()
   },
   async handleClickSearchButton(){
-    // const historyProducts = this.data.historyProducts
-    const url = "http://59.64.75.5:8104/api/princi/auth/records/1/3?name=" + this.data.searchInput
-    const token = wx.getStorageSync('token')
-    const header = {"token":token}
-    // const resultArray = historyProducts.filter((item)=>item.equipName == this.data.searchInput)
-    wx.request({
-      url: url,
-      method:"GET",
-      header:header,
-      success:(result)=>{
-        console.log(result)
-      }
-    })
-    // console.log(resultArray)
-    // this.setData({
-    //   historyProducts:resultArray
-    // })
+    this.page = 1
+    const input = this.data.searchInput
+    if(!input.trim()){
+      await showToast({title:'输入不合法,请重新输入'})
+      this.setData({searchInput:null})
+      return;
+    }
+    this.sendRequest()
   },
   handleSelect(e){
     const select = e.currentTarget.dataset.index
@@ -60,8 +58,13 @@ Page({
     try{
       const page = this.page
       const limit = this.limit
+      const searchInput = this.data.searchInput
       // 参数的合并
       let url = "http://59.64.75.5:8104/api/princi/auth/records/" + page + "/" + limit
+      if(searchInput){
+        url += "?equipName=" + searchInput
+      }
+      console.log(url)
       const token = wx.getStorageSync('token')
       const header = {"token":token}
 
@@ -72,7 +75,7 @@ Page({
         header:header,
         success:(result)=>{
           // console.log(result)
-               // 实现触底刷新功能
+          // 实现触底刷新功能
           let total = result.data.data.total
           this.totalPageNum = Math.ceil(total / this.limit)
           // 对当前页面的物品列表赋值

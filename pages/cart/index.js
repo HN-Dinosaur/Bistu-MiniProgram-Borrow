@@ -55,19 +55,31 @@ Page({
     this.uploadInfo = wrapInfo
   },
   async requestResult(){
-    console.log(this.uploadInfo)
+    // console.log(this.uploadInfo)
     //封装好参数  
     this.wrapperInfo()
     const token = wx.getStorageSync('token')
     const header = {"token":token,"content-type":"application/json"}
-    console.log(header) 
+    // console.log(header) 
     wx.request({
       url: 'http://59.64.75.5:8104/api/princi/auth/borrow',
       method:"POST",
       data:this.uploadInfo, 
       header:header,
       success:(result)=>{
-        console.log(result)
+        // console.log(result)
+        // wx.setStorageSync('product', null)
+        wx.removeStorage({
+          key: 'product',
+        })
+        wx.showToast({
+          title: '成功借出',
+        })
+        setTimeout(function(){
+          wx.switchTab({
+            url: '../search/index',
+          })
+        },1000)
       }
     })
   }
