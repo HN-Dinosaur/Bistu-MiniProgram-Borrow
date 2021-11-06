@@ -75,26 +75,31 @@ Page({
         method:'GET',
         header:header,
         success:(result)=>{
-          console.log(result)
-          // 实现触底刷新功能
-          let total = result.data.data.total
-          this.totalPageNum = Math.ceil(total / this.limit)
-          // 对当前页面的物品列表赋值
-          const historyProducts = result.data.data.records
-          if(this.page >= 2){
-            this.setData({
-              historyProducts:[...this.data.historyProducts,...historyProducts.reverse()]
-            })
-          }else if(this.page === 1){
-            this.setData({
-              historyProducts:historyProducts.reverse()
-            })
+          // console.log(result)
+          if(result.data.code == 200){
+            // 实现触底刷新功能
+            let total = result.data.data.total
+            this.totalPageNum = Math.ceil(total / this.limit)
+            // 对当前页面的物品列表赋值
+            const historyProducts = result.data.data.records
+            if(this.page >= 2){
+              this.setData({
+                historyProducts:[...this.data.historyProducts,...historyProducts.reverse()]
+              })
+            }else if(this.page === 1){
+              this.setData({
+                historyProducts:historyProducts.reverse()
+              })
+            }
+            if(historyProducts.length == 0){
+              this.setData({tips:'目前还没有借出任何物品'})
+            }
+            //函数结束，下拉刷新结束
+            wx.stopPullDownRefresh()
+          }else{
+            this.setData({tips:'请在连接校园网后重试'})
           }
-          if(historyProducts.length == 0){
-            this.setData({tips:'目前还没有借出任何物品'})
-          }
-          //函数结束，下拉刷新结束
-          wx.stopPullDownRefresh()
+         
         },
         fail:(error)=>{
           this.setData({tips:'请在连接校园网后重试'})

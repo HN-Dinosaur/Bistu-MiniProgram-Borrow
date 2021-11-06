@@ -117,18 +117,32 @@ Page({
       const header = {"token":token,"content-type":"application/json"}
       // const result = await request({url,data:this.verificationInfo,method:"POST", header})
       wx.request({
+        timeout:1000,
         url: url,
         method:"POST",
         header:header,
         data:this.verificationInfo,
         success:(result)=>{
-          console.log(result)
+          if(result.data.code == 200){
+            wx.showToast({
+              icon:'success',
+              title: '认证成功'
+            })
+            setTimeout(function(){
+             //界面跳转
+              wx.switchTab({
+                url: '../../pages/index/index',
+              })
+            },1000)
+          }else{
+            showToast({title:'请在连接校园网后重试'})
+          }
+        },
+        fail:(error)=>{
+          showToast({title:'认证失败，请稍后重试'})
         }
       })
-      //界面跳转
-      wx.switchTab({
-        url: '../../pages/index/index',
-      })
+
     }else{
       showToast({title:"请填写完全部信息"})
     }

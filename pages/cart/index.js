@@ -67,6 +67,7 @@ Page({
       data:this.uploadInfo, 
       header:header,
       success:(result)=>{
+        console.log(result)
         if(result.data.code == 200){
           //从缓存中删除
           wx.removeStorage({
