@@ -1,6 +1,5 @@
 // pages/verification/index.js
 import {showToast} from "../../utils/asyncWX.js"
-import {request} from "../../request/index.js"
 Page({
 
   /**
@@ -159,9 +158,10 @@ Page({
   },
   handleCancel(){
     if(this.data.isCanBack){
-      wx.navigateBack({
-        delta: 1,
+      wx.switchTab({
+        url: '../user/index',
       })
+
     }else{
       showToast({title:"认证信息结束才可以正常使用此小程序"})
     }

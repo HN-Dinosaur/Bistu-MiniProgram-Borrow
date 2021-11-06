@@ -82,3 +82,21 @@ page{
 .item_value_content{
   color: #f00;
 }
+.clarify{
+  margin-top: 80rpx;
+  align-items:center;
+  justify-content: center;
+  display: flex;
+  height: 200rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.clarify view{
+  align-items:center;
+  justify-content: center;
+  background-color: #fff;
+  font-size: 50rpx;
+  font-family: serif;
+  font-weight: 400;
+  color: rgb(94, 89, 89); 
+}

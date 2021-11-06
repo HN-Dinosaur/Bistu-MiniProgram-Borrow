@@ -1,60 +1,67 @@
 <view class="page">
 
-  <view class="userinfo">
 
-    <view class="top">
-      <view class="userinfo-avatar">
-        <open-data type="userAvatarUrl"></open-data>
+  <block wx:if="{{login}}">
+    <view class="userinfo">
+
+      <view class="top">
+        <view class="userinfo-avatar">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class="name_and_no">
+          <view class="name">{{verification.name}}</view>
+          <view class="no">{{verification.no}}</view>
+        </view>
       </view>
-      <view class="name_and_no">
-        <view class="name">{{verification.name}}</view>
-        <view class="no">{{verification.no}}</view>
+
+      <view class="bottom">
+        <view class="sex_and_class">
+          <view class="sex">性别: {{verification.sex == 1 ? "男" : "女"}}</view>
+          <block wx:if="{{verification.isStudent}}">
+            <view class="class">班级: {{verification.schoolClass == "" ? "待填写" : verification.schoolClass}}</view>
+          </block>
+          <block wx:else>
+            <view class="class">系部: {{verification.dept == "" ? "待填写" : verification.dept}}</view>
+          </block>
+        </view>
+        <view class="college_and_major">
+          <view class="college">学院: {{verification.college == "" ? "待填写" : verification.college}}</view>
+          <block wx:if="{{verification.isStudent}}">
+            <view class="major">专业: {{verification.major == "" ? "待填写" : verification.major}}</view>
+          </block>
+        </view>
       </view>
-    </view>
 
-    <view class="bottom">
-      <view class="sex_and_class">
-        <view class="sex">性别: {{verification.sex == 1 ? "男" : "女"}}</view>
-        <block wx:if="{{verification.isStudent}}">
-          <view class="class">班级: {{verification.schoolClass == "" ? "待填写" : verification.schoolClass}}</view>
-        </block>
-        <block wx:else>
-          <view class="class">系部: {{verification.dept == "" ? "待填写" : verification.dept}}</view>
-        </block>
+
+
       </view>
-      <view class="college_and_major">
-        <view class="college">学院: {{verification.college == "" ? "待填写" : verification.college}}</view>
-        <block wx:if="{{verification.isStudent}}">
-          <view class="major">专业: {{verification.major == "" ? "待填写" : verification.major}}</view>
-        </block>
+
+      <view class="select_button">
+      <view class="modify_verification">
+        <navigator url="../../pages/verification/index">
+          <label>修改认证信息</label>
+        </navigator>
+
       </view>
-    </view>
 
+      <view class="query_history">
+        <navigator url="../../pages/query_history/index">
+          <label>查询当前历史记录</label>
+        </navigator>
+      </view>
 
-    
-  </view>
+      <view class="return">
+        <navigator url="../../pages/return/index">
+          <label>返还物品</label>
+        </navigator>
+      </view>
 
-  <view class="select_button">
-    <view class="modify_verification">
-      <navigator url="../../pages/verification/index">
-        <label>修改认证信息</label>
-      </navigator>
+      </view>
+  </block>
+  <block wx:else>
 
-    </view>
-
-    <view class="query_history">
-      <navigator url="../../pages/query_history/index">
-        <label>查询当前历史记录</label>
-      </navigator>
-    </view>
-
-    <view class="return">
-      <navigator url="../../pages/return/index">
-        <label>返还物品</label>
-      </navigator>
-    </view>
-
-  </view>
+  </block>
+  
 
   <view class="contact">
     <button open-type="contact" class="contact">联系我们</button>

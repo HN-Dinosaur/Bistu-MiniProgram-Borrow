@@ -9,35 +9,40 @@
       <button bindtap="handleClickSearchButton">搜索</button>
     </view>
   </view>
-
+ 
   <block wx:if="{{!tips}}">
-    <view class="product_wrap" wx:for="{{productsList}}" wx:key="id"> 
+    <view class="product_wrap" wx:for="{{historyProducts}}" wx:key="id"> 
       <view class="product_item">
         <view class="item_name_wrap item_wrap">
           <view class="item_name_title item_title"><label>名称</label></view>
-          <view class="item_name_content item_content">{{item.name}}</view>
+          <view class="item_name_content item_content">{{item.equipName}}</view>
         </view> 
         <view class="item_brandName_wrap item_wrap">
-          <view class="item_brandName_title item_title"><label>品牌名</label></view>
-          <view class="item_brandName_content item_content">{{item.brandName}}</view>
+          <view class="item_brandName_title item_title"><label>始借出时间</label></view>
+          <view class="item_brandName_content item_content">{{item.createTime}}</view>
         </view>
         <view class="item_principal_wrap item_wrap">
-          <view class="item_principal_title item_title"><label>负责人</label></view>  
-          <view class="item_principal_content item_content">{{item.principal}}</view>
+          <view class="item_principal_title item_title"><label>预归还时间</label></view>  
+          <view class="item_principal_content item_content">{{item.returnTime}}</view>
         </view>
         <view class="item_value_wrap item_wrap">
-          <view class="item_value_title item_title"><label>价格</label></view>
-          <view class="item_value_content item_content">¥{{item.value}}</view>
+          <view class="item_value_title item_title"><label>状态</label></view>
+          <view class="item_value_content item_content">{{item.param.returnStatus}}</view>
+        </view>
+        <view class="item_value_wrap item_wrap">
+          <view class="item_value_title item_title"><label>剩余天数</label></view>
+          <view class="item_value_content item_content">{{item.returnCount}}</view>
         </view>
       </view>
+
       <view class="btn_wrap">
         <view>
-          <button bindtap="handleSelect" data-index="{{index}}">选取</button>
+          <button bindtap="handleSelect" data-index="{{index}}">返还</button>
         </view>
       </view>
+
     </view>
   </block>
-
   <block wx:else>
       <view class="clarify">
         <navigator url="../verification/index">
@@ -45,5 +50,5 @@
         </navigator>
       </view>
   </block>
-
+  
 </view>

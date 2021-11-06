@@ -1,0 +1,70 @@
+<view class="change_user_page">
+	<view class="user_form">
+		<view class="user_item">
+
+			<view class="user_signature_item ">
+				<block wx:if="{{returnSelfImg}}">
+					<view class="user_signature_img">
+						<image class="img" src="{{returnSelfImg}}"></image>
+						<view class="img_btn_wrap">
+							<navigator url="../signature/index?index=5">
+								<button type="warn">重新签名</button>
+							</navigator>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="user_signature_button">
+						<navigator url="../signature/index?index=5">
+							<button type="primary">点击签名</button>
+						</navigator>
+					</view>
+				</block>
+			</view>
+
+
+			<view class="user_name_item single_item">
+				<view class="user_name_title item_title"><label>返还人姓名</label></view>
+				<view class="user_name_input item_input">
+					<input type="text" placeholder="请填写返还人姓名" value="{{returnSelfName}}" bindinput="handleReturnSelfNameInput"></input>
+				</view>
+			</view>
+
+			<view class="lendman_signature_item">
+				<block wx:if="{{returnLendImg}}">
+					<view class="user_signature_img">
+						<image class="img" src="{{returnLendImg}}"></image>
+						<view class="img_btn_wrap">
+							<navigator url="../signature/index?index=6">
+								<button type="warn">重新签名</button>
+							</navigator>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="lendman_signature_button">
+					<navigator url="../signature/index?index=6">
+						<button type="primary">点击签名</button>
+					</navigator>
+				</view>
+				</block>
+			</view>
+
+
+			<view class="lendman_name_item single_item">
+				<view class="lendman_name_title item_title"><label>经办人姓名</label></view>
+				<view class="lendman_name_input item_input">
+					<input type="text" placeholder="请填写经办人姓名" bindinput="handleReturnLendNameInput"></input>
+				</view>
+			</view>
+
+			
+		</view>
+	</view>
+<!-- 按钮 -->
+	<view class="but">
+		<view class="submit_btn">
+			<button type="primary" bindtap="handleSubmit">提交</button>
+		</view>
+	</view>
+</view>

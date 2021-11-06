@@ -1,5 +1,4 @@
-import { request } from "../../request/index.js"
-import {showModal,showToast} from "../../utils/asyncWX.js"
+import {showToast} from "../../utils/asyncWX.js"
 Page({
 
   data: {
@@ -34,7 +33,7 @@ Page({
       await showToast({title:"请先填写基本信息"})
       return 
     }
-        //上传信息
+    //上传信息
     this.requestResult()
   },
   wrapperInfo(){
@@ -62,24 +61,37 @@ Page({
     const header = {"token":token,"content-type":"application/json"}
     // console.log(header) 
     wx.request({
+      timeout:1000,
       url: 'http://59.64.75.5:8104/api/princi/auth/borrow',
       method:"POST",
       data:this.uploadInfo, 
       header:header,
       success:(result)=>{
-        // console.log(result)
-        // wx.setStorageSync('product', null)
-        wx.removeStorage({
-          key: 'product',
-        })
-        wx.showToast({
-          title: '成功借出',
-        })
-        setTimeout(function(){
-          wx.switchTab({
-            url: '../search/index',
+        if(result.data.code == 200){
+          //从缓存中删除
+          wx.removeStorage({
+            key: 'product',
           })
-        },1000)
+          wx.showToast({
+            title: '成功借出',
+          })
+          //延迟跳转
+          setTimeout(function(){
+            wx.switchTab({
+              url: '../search/index',
+            })
+          },1000)
+        }else{
+          wx.showToast({
+            icon:'error',
+            title:'借出失败',
+          })
+        }
+      },
+      fail:(error)=>{
+        wx.showToast({
+          title: '请在连接校园网后重试',
+        })
       }
     })
   }

@@ -10,6 +10,7 @@ Page({
     //发送请求返回的数组
     productsList:[],
     searchInput:null,
+    tips:''
   }, 
   page:1,
   limit:10,
@@ -42,7 +43,7 @@ Page({
     const input = this.data.searchInput
     if(!input.trim()){
       await showToast({title:'输入不合法,请重新输入'})
-      this.setData({searchInput:null})
+      this.setData({searchInput:null}) 
       return;
     }
     this.sendRequest()
@@ -54,7 +55,7 @@ Page({
       const limit = this.limit
       const searchInput = this.data.searchInput
       // 参数的合并
-      let url = "http://59.64.75.5:8101/admin/equip/list/" + page + "/" + limit
+      let url = "http://59.64.75.5:8104/admin/equip/list/" + page + "/" + limit
       if(searchInput){
         url += "?name=" + searchInput
       }
@@ -74,13 +75,13 @@ Page({
           productsList:productsList
         })
       }
+      if(productsList.length == 0){
+        this.setData({tips:'当前库存中没有任何物品'})
+      }
       //函数结束，下拉刷新结束
       wx.stopPullDownRefresh()
     }catch(error){
-      // console.log(error)
-      if(error.errMsg === "request:fail timeout"){
-        await showToast({title:"网络出现问题"})
-      }
+      this.setData({tips:'请连接校园网后重试'})
     }
   },
 

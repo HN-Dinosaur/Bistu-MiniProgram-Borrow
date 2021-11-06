@@ -1,5 +1,4 @@
-import {showModal,showToast} from "../../utils/asyncWX.js"
-import {request} from "../../request/index.js"
+import {showToast} from "../../utils/asyncWX.js"
 Page({
 
   /**
@@ -7,7 +6,7 @@ Page({
    */
   data: {
     historyProducts:"",
-    searchInput:null,
+    searchInput:"",
     tips:''
   },
   page:1,
@@ -65,43 +64,53 @@ Page({
       if(searchInput){
         url += "?equipName=" + searchInput
       }
-      // console.log(url)
       const token = wx.getStorageSync('token')
       const header = {"token":token}
 
       //发送请求
       wx.request({
+        timeout:1000,
         url: url,
         method:'GET',
         header:header,
         success:(result)=>{
-          console.log(result)
-          // 实现触底刷新功能
-          let total = result.data.data.total
-          this.totalPageNum = Math.ceil(total / this.limit)
-          // 对当前页面的物品列表赋值
-          const historyProducts = result.data.data.records
-          if(this.page >= 2){
-            this.setData({
-              historyProducts:[...this.data.historyProducts,...historyProducts.reverse()]
-            })
-          }else if(this.page === 1){
-            this.setData({
-              historyProducts:historyProducts.reverse()
-            })
+          // console.log(result)
+          
+          //请求后端数据成功
+          if(result.data.code == 200){
+              // 实现触底刷新功能
+            let total = result.data.data.total
+            this.totalPageNum = Math.ceil(total / this.limit)
+            // 对当前页面的物品列表赋值
+            const historyProducts = (result.data.data.records).reverse().filter(item => item.param.returnStatus == "未归还")
+            if(this.page >= 2){
+              this.setData({
+                historyProducts:[...this.data.historyProducts,...historyProducts]
+              })
+            }else if(this.page === 1){
+              this.setData({
+                historyProducts:historyProducts
+              })
+            }
+            if(historyProducts.length == 0){
+              this.setData({tips:'当前没有未归还物品'})
+            }
+            //函数结束，下拉刷新结束
+            wx.stopPullDownRefresh()
+            //请求后端数据失败
+          }else{
+            this.setData({tips:'请在连接校园网后重试'})
           }
-          if(historyProducts.length == 0){
-            this.setData({tips:'目前还没有借出任何物品'})
-          }
-          //函数结束，下拉刷新结束
-          wx.stopPullDownRefresh()
         },
         fail:(error)=>{
-          this.setData({tips:'请在连接校园网后重试'})
+          this.setData({tips:'请连接校园网后重试'})
         }
       })
+  
     }catch(error){
-      this.setData({tips:'请在连接校园网后重试'})
+      if(error.errMsg === "request:fail timeout"){
+        await showToast({title:"网络出现问题"})
+      }
     }
   }, 
   // 下拉触底函数

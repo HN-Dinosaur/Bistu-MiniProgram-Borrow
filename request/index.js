@@ -19,10 +19,12 @@
         ...params,
         // header: header,
         // url: baseURL + params.url,
-        timeout:3000,
+        timeout:1000,
         success:(result)=>{
           // resolve(result.data.message)
-          resolve(result)
+          if(result.data.code == 200){
+            resolve(result)
+          }
         },
         fail:(err)=>{
           reject(err)

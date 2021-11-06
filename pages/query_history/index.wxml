@@ -10,26 +10,35 @@
     </view>
   </view>
 
-
-  <view class="product_wrap" wx:for="{{historyProducts}}" wx:key="id"> 
-    <view class="product_item">
-      <view class="item_name_wrap item_wrap">
-        <view class="item_name_title item_title"><label>名称</label></view>
-        <view class="item_name_content item_content">{{item.equipName}}</view>
-      </view> 
-      <view class="item_brandName_wrap item_wrap">
-        <view class="item_brandName_title item_title"><label>始借用时间</label></view>
-        <view class="item_brandName_content item_content">{{item.createTime}}</view>
-      </view>
-      <view class="item_principal_wrap item_wrap">
-        <view class="item_principal_title item_title"><label>预归还时间</label></view>  
-        <view class="item_principal_content item_content">{{item.returnTime}}</view>
-      </view>
-      <view class="item_value_wrap item_wrap">
-        <view class="item_value_title item_title"><label>状态</label></view>
-        <view class="item_value_content item_content">{{item.param.returnStatus}}</view>
+  <block wx:if="{{!tips}}">
+    <view class="product_wrap" wx:for="{{historyProducts}}" wx:key="id"> 
+      <view class="product_item">
+        <view class="item_name_wrap item_wrap">
+          <view class="item_name_title item_title"><label>名称</label></view>
+          <view class="item_name_content item_content">{{item.equipName}}</view>
+        </view> 
+        <view class="item_brandName_wrap item_wrap">
+          <view class="item_brandName_title item_title"><label>始借用时间</label></view>
+          <view class="item_brandName_content item_content">{{item.createTime}}</view>
+        </view>
+        <view class="item_principal_wrap item_wrap">
+          <view class="item_principal_title item_title"><label>预归还时间</label></view>  
+          <view class="item_principal_content item_content">{{item.returnTime}}</view>
+        </view>
+        <view class="item_value_wrap item_wrap">
+          <view class="item_value_title item_title"><label>状态</label></view>
+          <view class="item_value_content item_content">{{item.param.returnStatus}}</view>
+        </view>
       </view>
     </view>
+  </block>
+  <block wx:else>
+      <view class="clarify">
+        <navigator url="../verification/index">
+          <view>{{tips}}</view>
+        </navigator>
+      </view>
+  </block>
 
-  </view>
+  
 </view>

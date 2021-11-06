@@ -15,7 +15,8 @@ Page({
       schoolClass:"待填写",
       major:"待填写",
       no:"待填写"
-    }
+    },
+    login:true
   },
   onLoad(){
     
